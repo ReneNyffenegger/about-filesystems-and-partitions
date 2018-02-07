@@ -22,11 +22,13 @@ sudo resize2fs -p /dev/${device}4  4M
 #
 #  !!!!! Why does this command insist on asking me if I am sure !!!!!
 #
-#   https://unix.stackexchange.com/a/202872/6479
-#
 # $exec_parted  resizepart  4  25M
-$exec_parted unit B  resizepart 4 $((25*1024*1024)) Yes
-$exec_parted unit B  resizepart 4 $((25*1024*1024)) Yes
+#
+# Ah, it's a bug:
+#   https://unix.stackexchange.com/a/202872/6479
+
+sudo $parted_executable /dev/${device} unit B resizepart 4 $((25*1024*1024)) Yes
+
 
 #  4. Check filesystem for errors again.
 sudo e2fsck -f -y -v -C 0 /dev/${device}4 
@@ -38,4 +40,4 @@ sudo e2fsck -f -y -v -C 0 /dev/${device}4
 #     -O : offset when writing data
 #     -p : show progress
 
-e2image -ra -p -O $$(5000*1024))
+sudo e2image -ra -p -O $((5000*1024*1024)) /dev/${device}4 img
