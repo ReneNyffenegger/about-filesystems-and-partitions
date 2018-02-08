@@ -1,0 +1,51 @@
+. variables
+
+. remove-partitions
+
+. create-partition-table
+
+. create-partitions
+
+. print-partition-table
+
+. format-and-mount-partitions
+
+
+#
+#  Show device files
+#
+# ls -l /dev/$device*
+# ls -l /sys/block/$dev/*/
+
+
+. create-some-files
+
+. unmount-partitions
+
+# . resize-partition
+. shrink-filesystem
+
+. create-filesystem-image
+
+. shrink-partition
+
+. restore-filesystem-image
+
+. grow-partition
+
+. mount-again
+
+. cat-files
+
+. unmount-partitions
+
+#
+#    TODO
+#
+# optimal_io_size=$(cat /sys/block/$device/queue/optimal_io_size)
+# minimum_io_size=$(cat /sys/block/$device/queue/minimum_io_size)
+# 
+# echo "
+#   optimal_io_size: $optimal_io_size
+#   minimum_io_size: $minimum_io_size
+# "

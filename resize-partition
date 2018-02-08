@@ -1,0 +1,72 @@
+#
+#   gparted-pkexec
+#
+
+#
+#    Resize (grow) 3rd partition.
+#
+
+#
+# first the 4th parition needs to shrink
+#
+
+
+#  1. Shrink filesystem
+
+
+#  2. Check filesystem for errors. If possible, fix them
+
+#  3. Move filesystem to the right
+#
+#     -r : create raw image file (instead of normal one).
+#     -a : include all data
+#     -O : offset when writing data
+#     -p : show progress
+
+# sudo e2image -ra -p -O $((5*1024*1024)) /dev/${device}4 img
+
+
+#  5. Shrink partition 4
+#
+#     This operation consists of two steps:
+#     First, the fourth partition needs to be removed.
+#     Second: a new partition is recreated with a new start.
+#
+
+
+# sudo e2image -I img /dev/${device}4
+
+
+#  6. Grow partition 3
+#
+#     For a reason that's beyond me, if a partition's size is
+#     changed but it keeps the same start, it can be done
+#     with one operation: resize
+#
+#     Unfortunately, there's a bug with resize so that the -s flag
+#     cannot be used (https://unix.stackexchange.com/a/202872/6479)
+#       $exec_parted  resizepart  4  …
+#
+#
+# $exec_parted unit B resizepart 3  $(( $part_4_start_new - 1 ))  Yes
+
+
+# $exec_parted        resizepart 3  $(( $part_4_start_new - 1 ))b Yes
+
+# $exec_parted unit B resizepart 3 Yes  $(( $part_4_start_new - 1 ))
+# sudo $parted_executable /dev/$device 3 Yes $(( $part_4_start_new - 1 ))
+
+
+
+
+#  4. Check filesystem for errors again.
+
+#  .... grow partition to 10 M again???
+
+#  5. Move filesystem to the right
+#
+#     -r : create raw image file (instead of normal one).
+#     -a : include all data
+#     -O : offset when writing data
+#     -p : show progress
+

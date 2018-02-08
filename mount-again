@@ -1,0 +1,4 @@
+
+for dev_nr in {2..6}; do
+    mount_partition $dev_nr
+done

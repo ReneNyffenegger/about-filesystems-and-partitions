@@ -23,3 +23,12 @@ device=sdb
 #    mounted.
 #
 mount_dir=./mountpoints/
+
+part_1_start=$((        17 * 1024                     ))
+part_2_start=$((       512 * 1024                     )) 
+part_3_start=$(( 10 * 1024 * 1024                     ))
+part_4_start=$(( 10 * 1024 * 1024 + $part_3_start     ))
+part_5_start=$(( 10 * 1024 * 1024 + $part_4_start     ))
+part_6_start=$(( 10 * 1024 * 1024 + $part_5_start     ))
+part_7_start=$(( 10 * 1024 * 1024 + $part_6_start     ))
+part_7_end=$((   10 * 1024 * 1024 + $part_7_start - 1 ))

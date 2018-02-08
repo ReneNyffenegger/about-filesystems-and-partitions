@@ -1,0 +1,5 @@
+#    Use -p to show progress
+sudo resize2fs  /dev/${device}4  5M
+
+#    Check if filesystem is still ok
+sudo e2fsck -f -y -C 0 /dev/${device}4 

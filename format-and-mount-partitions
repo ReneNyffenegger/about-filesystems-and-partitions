@@ -9,6 +9,14 @@ rm -rf $mount_dir
 # done
 # ----------------------------------
 
+
+mount_partition() {
+  local dev_nr=$1
+
+  sudo mount /dev/${device}$dev_nr ${mount_dir}${device}${dev_nr} # -o uid=$(id -u),gid=$(id -g)
+  sudo chown -R $(id -u):$(id -g)  ${mount_dir}${device}${dev_nr} 
+}
+
 format_and_mount() {
     local dev_nr=$1
     mkdir -p ${mount_dir}${device}${dev_nr}
@@ -26,8 +34,7 @@ format_and_mount() {
     echo "formatting /dev/${device}$dev_nr"
 
     sudo mkfs.ext4 /dev/${device}$dev_nr  -q  # -q: quiet mode
-    sudo mount /dev/${device}$dev_nr ${mount_dir}${device}${dev_nr} # -o uid=$(id -u),gid=$(id -g)
-    sudo chown -R $(id -u):$(id -g)  ${mount_dir}${device}${dev_nr} 
+    mount_partition $dev_nr
 }
 
 # don't create 1

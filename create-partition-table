@@ -3,4 +3,8 @@
 #     ( Other possible values would be:
 #       aix, amiga, bsd, dvh, loop, mac, msdos, pc98, sun )
 #
+
+
+sudo dd if=/dev/zero of=/dev/$device bs=1024 count=$(( $part_7_end / 1024 ))
+
 $exec_parted  mklabel gpt

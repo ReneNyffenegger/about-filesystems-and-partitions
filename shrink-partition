@@ -1,0 +1,13 @@
+#
+#    First, we define a new variable to store
+#    the start of the shrunk filesystem's new
+#    start:
+#
+part_4_start_new=$(( $part_4_start + 5*1024*1024 ))
+
+#
+#    Then, we use parted again to remove and
+#    recreate the partition with a different size:
+#
+$exec_parted rm 4
+$exec_parted mkpart --align cylinder nm_four_resized ext4  $(( $part_4_start_new ))b   $(( $part_5_start - 1 ))b

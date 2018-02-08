@@ -1,0 +1,1 @@
+sudo dd if=/dev/${device}4 bs=1024 count=$((5*1024)) of=img

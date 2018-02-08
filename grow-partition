@@ -1,0 +1,11 @@
+$exec_parted rm 3
+$exec_parted mkpart --align cylinder nm_three_resized $(( $part_3_start ))b  $(( $part_4_start_new -1 ))b
+
+#
+#  Check file system three.
+#  Apparently, we have to give the system some time to recognize the new
+#  partition:
+#
+sleep 0.1
+
+sudo e2fsck -f -y -C 0 /dev/${device}3 

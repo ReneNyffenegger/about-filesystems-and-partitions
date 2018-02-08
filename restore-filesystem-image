@@ -1,0 +1,6 @@
+sudo dd if=img bs=1024 of=/dev/${device}4
+
+#
+#    It cannot hurt to check the fileystem again
+#
+sudo e2fsck -f -y -C 0 /dev/${device}4
