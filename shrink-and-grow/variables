@@ -1,3 +1,11 @@
+#
+#    Specify the device on which we're going to run the examples.
+#
+device=sdb
+
+#
+#    Where is parted located:
+#
 parted_executable=/sbin/parted
 
 if [[ ! -x $parted_executable ]]; then
@@ -12,11 +20,6 @@ fi
 #
 exec_parted="sudo $parted_executable -s /dev/$device"
 
-
-#
-#    Specify the device on which we're going to run the examples.
-#
-device=sdb
 
 #
 #    The directory into which the partitions/devices will be
