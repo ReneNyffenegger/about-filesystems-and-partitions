@@ -1,6 +1,19 @@
 
 echo "This is the second  partition" > ${mount_dir}sdb2/readme.txt
+
 echo "This is the third   partition" > ${mount_dir}sdb3/readme.txt
+
+# Create two 4 M file on the fourth partition
+dd if=/dev/zero of=${mount_dir}sdb4/4M.1 bs=1024 count=1024
+dd if=/dev/zero of=${mount_dir}sdb4/4M.2 bs=1024 count=1024
+
+# Then write a file to the fourth partition
 echo "This is the fourth  partition" > ${mount_dir}sdb4/readme.txt
+
+# Remove the 1st of the 4M files again:
+rm ${mount_dir}sdb4/4M1
+
+
 echo "This is the fifth   partition" > ${mount_dir}sdb5/readme.txt
+
 echo "This is the sixth   partition" > ${mount_dir}sdb6/readme.txt
