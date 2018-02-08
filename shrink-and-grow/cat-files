@@ -1,0 +1,8 @@
+cat    ${mount_dir}${device}3/readme.txt
+cat    ${mount_dir}${device}4/readme.txt
+
+#
+#      Verify that the size is  of 12.MiB
+#      is indeed 12 MB:
+#
+ls -l  ${mount_dir}${device}3/12.MiB

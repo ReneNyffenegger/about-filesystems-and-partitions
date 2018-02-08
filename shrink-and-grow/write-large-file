@@ -1,0 +1,1 @@
+dd if=/dev/zero of=${mount_dir}${device}3/12.MiB bs=1024 count=$((12*1024))

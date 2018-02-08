@@ -33,7 +33,11 @@
 
 . grow-partition
 
+. grow-filesystem
+
 . mount-again
+
+. write-large-file
 
 . cat-files
 

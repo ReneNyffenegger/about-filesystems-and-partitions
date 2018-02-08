@@ -1,0 +1,1 @@
+sudo resize2fs  /dev/${device}3  15M

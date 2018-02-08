@@ -20,5 +20,5 @@ $exec_parted  mkpart  --align cylinder  nm_seven  linux-swap  ${part_7_start}b $
 #
 #     hexdumping it
 #
-#  sudo dd if=/dev/sdb bs=512 count=63 | hexdump -C
+#  sudo dd if=/dev/${device} bs=512 count=63 | hexdump -C
 
